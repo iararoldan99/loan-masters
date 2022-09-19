@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ClientMapper {
-
     public Client fromDTOToEntity(ClientDTO entry){
         var entity = new Client();
         entity.setFullName(entry.getFullName());

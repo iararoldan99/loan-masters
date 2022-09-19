@@ -28,6 +28,10 @@ public interface Validator extends Function<ClientDTO, Validator.ValidationResul
         return client -> client.getAge() > 18 ? SUCCESS : UNDERAGE;
     }
 
+    static Validator isBlackListed(){
+        return client -> client.isBlackListed() ? BLACK_LISTED : SUCCESS;
+    }
+
     default Validator or(Validator other){
         return client -> {
             ValidationResult result = this.apply(client);
@@ -40,6 +44,7 @@ public interface Validator extends Function<ClientDTO, Validator.ValidationResul
         UNDERAGE,
         UNEMPLOYED,
         DEBTOR,
-        CRIMINAL_RECORD
+        CRIMINAL_RECORD,
+        BLACK_LISTED
     }
 }

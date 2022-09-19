@@ -19,7 +19,7 @@ public class Bank {
     @Column(name = "id", nullable = false)
     private Long id;
     private String name;
-    private Float totalMoneyAvailable;
+    private Double totalMoneyBalance;
 
     @OneToMany(orphanRemoval = true, cascade = {CascadeType.ALL})
     @JoinColumn(name = "bank_id")

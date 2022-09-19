@@ -15,4 +15,5 @@ public class ClientDTO {
     private Integer totalLoansTaken;
     private String jobTitle;
     private boolean criminal;
+    private boolean blackListed;
 }

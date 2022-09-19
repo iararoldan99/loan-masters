@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class LoanMapper {
-
     @Autowired
     private ClientMapper clientMapper;
 
@@ -18,7 +17,6 @@ public class LoanMapper {
         entity.setMonths(entry.getMonths());
         entity.setInterest(entry.getInterest());
         entity.setStart(entry.getStart());
-        entity.setDue(entry.getDue());
         return entity;
     }
 }
