@@ -12,8 +12,9 @@ import java.util.Date;
 public class LoanDTO {
     public ClientDTO client;
     public Double amount;
+    public Integer dues;
     private Float interest;
     private Integer months;
     private Date start;
-    private Date due;
+    private Date end;
 }

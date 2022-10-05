@@ -10,13 +10,12 @@ import com.ar.loan.masters.mapper.ClientMapper;
 import com.ar.loan.masters.mapper.LoanMapper;
 import com.ar.loan.masters.repository.BankRepository;
 import com.ar.loan.masters.service.BankService;
-import com.ar.loan.masters.service.ClientService;
-import com.ar.loan.masters.service.LoanService;
 import com.ar.loan.masters.utils.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -55,7 +54,7 @@ public class BankServiceImpl implements BankService {
         if (totalBalance > 0 && bank.getId() != null) {
             bank.setTotalMoneyBalance(subtraction);
             bankRepository.save(bank);
-        }else {
+        } else {
             try {
                 throw new InsufficientFundsException("Not enough money to grant loan");
             } catch (InsufficientFundsException e) {
@@ -68,7 +67,7 @@ public class BankServiceImpl implements BankService {
     public Function<LoanDTO, Loan> grantLoan = loanDTO -> {
         Loan loan = loanMapper.fromDTOToEntity(loanDTO);
         subtractMoneyFromBalance.apply(loan.getAmount());
-        Client client = clientMapper.fromDTOToEntity(loanDTO.getClient());
+        Client client = clientMapper.fromDTOToEntity(loanDTO.getClient(), loan);
         clientService.saveClient.accept(client);
         loanService.saveLoan.accept(loan);
         return loan;

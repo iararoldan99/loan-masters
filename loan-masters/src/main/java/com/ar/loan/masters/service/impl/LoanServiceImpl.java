@@ -14,8 +14,6 @@ import java.util.function.Supplier;
 
 @Service
 public class LoanServiceImpl implements LoanService {
-    // Un prestamo tiene un solo cliente, pero un cliente puede tener muchos prestamos
-
     @Autowired
     private LoanRepository repository;
     Consumer<Loan> saveLoan = loan -> repository.save(loan);

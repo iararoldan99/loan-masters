@@ -10,14 +10,19 @@ public class LoanMapper {
     @Autowired
     private ClientMapper clientMapper;
 
-    public Loan fromDTOToEntity(LoanDTO entry){
-        var entity = new Loan();
-        entity.setClient(clientMapper.fromDTOToEntity(entry.getClient()));
-        entity.setAmount(entry.getAmount());
-        entity.setMonths(entry.getMonths());
-        entity.setInterest(entry.getInterest());
-        entity.setStart(entry.getStart());
-        entity.setFullyPayed(false);
-        return entity;
+    public Loan fromDTOToEntity(LoanDTO loanDTO){
+        var loanEntity = new Loan();
+        loanEntity.setAmount(loanDTO.getAmount());
+        loanEntity.setInterest(loanDTO.getInterest());
+        loanEntity.setMonths(loanDTO.getMonths());
+        loanEntity.setStart(loanDTO.getStart());
+        loanEntity.setEnd(loanDTO.getEnd());
+        loanEntity.setDuesPayed(0);
+        loanEntity.setDues(loanDTO.getDues());
+        loanEntity.setDuesToPay(loanDTO.getDues());
+        loanEntity.setOverDues(0);
+        loanEntity.setFullyPayed(false);
+        loanEntity.setClientId(clientMapper.fromDTOToEntity(loanDTO.getClient(), loanEntity).getId());
+        return loanEntity;
     }
 }

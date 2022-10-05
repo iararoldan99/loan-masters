@@ -1,5 +1,6 @@
 package com.ar.loan.masters.entity;
 
+import com.ar.loan.masters.utils.JpaConverterJson;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -23,10 +24,7 @@ public class Bank {
 
     @OneToMany(orphanRemoval = true, cascade = {CascadeType.ALL})
     @JoinColumn(name = "bank_id")
+    @Convert(converter = JpaConverterJson.class)
     private List<Client> clients = new ArrayList<>();
-
-    public Bank(Double totalMoneyBalance){
-        this.totalMoneyBalance = totalMoneyBalance;
-    }
 
 }

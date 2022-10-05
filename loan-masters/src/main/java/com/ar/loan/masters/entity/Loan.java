@@ -15,15 +15,16 @@ public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "client_id")
-    private Client client;
+    private Integer clientId;
     private Double amount;
+    public Integer dues; // cuotas totales del prestamo
     private Integer duesPayed; // cuotas pagadas de ese prestamo en particular
     private Integer duesToPay; // cuotas a pagar NO VENCIDAS
     private Integer overDues; // cuotas vencidas
-    private boolean fullyPayed; // prestamo cancelado
+    private boolean fullyPayed; // prestamo cancelado por el cliente
     private Float interest;
     private Integer months;
     private Date start;
