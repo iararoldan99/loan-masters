@@ -5,16 +5,14 @@ import com.ar.loan.masters.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 @Service
-public class ClientService {
-    @Autowired
-    private static ClientRepository repository;
-    // Un prestamo tiene un solo cliente, pero un cliente puede tener muchos prestamos
-    public static Predicate<Long> clientExists = id -> repository.findById(id) != null;
-    public static Function<Long, Optional<Client>> findById = id -> repository.findById(id);
+public interface ClientService {
 
 }

@@ -20,9 +20,10 @@ public class Loan {
     @JoinColumn(name = "client_id")
     private Client client;
     private Double amount;
-    private Integer duesPayed;
-    private Integer duesToPay;
-    private boolean fullyPayed;
+    private Integer duesPayed; // cuotas pagadas de ese prestamo en particular
+    private Integer duesToPay; // cuotas a pagar NO VENCIDAS
+    private Integer overDues; // cuotas vencidas
+    private boolean fullyPayed; // prestamo cancelado
     private Float interest;
     private Integer months;
     private Date start;

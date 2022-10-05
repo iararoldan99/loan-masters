@@ -17,12 +17,16 @@ public class Bank {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
     private String name;
     private Double totalMoneyBalance;
 
     @OneToMany(orphanRemoval = true, cascade = {CascadeType.ALL})
     @JoinColumn(name = "bank_id")
     private List<Client> clients = new ArrayList<>();
+
+    public Bank(Double totalMoneyBalance){
+        this.totalMoneyBalance = totalMoneyBalance;
+    }
 
 }

@@ -13,10 +13,11 @@ public class LoanMapper {
     public Loan fromDTOToEntity(LoanDTO entry){
         var entity = new Loan();
         entity.setClient(clientMapper.fromDTOToEntity(entry.getClient()));
-        entity.setAmount(entity.getAmount());
+        entity.setAmount(entry.getAmount());
         entity.setMonths(entry.getMonths());
         entity.setInterest(entry.getInterest());
         entity.setStart(entry.getStart());
+        entity.setFullyPayed(false);
         return entity;
     }
 }

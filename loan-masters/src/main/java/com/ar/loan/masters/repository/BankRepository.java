@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface BankRepository extends JpaRepository<Bank, Long> {
-    @Query("select new Bank(b.totalMoneyBalance) from Bank b")
+    @Query("SELECT b.totalMoneyBalance from Bank b")
     Double findTotalMoneyBalance();
 
 

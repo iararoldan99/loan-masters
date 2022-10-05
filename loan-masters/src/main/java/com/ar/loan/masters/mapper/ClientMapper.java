@@ -15,6 +15,7 @@ public class ClientMapper {
         entity.setEmail(entry.getEmail());
         entity.setTotalLoansTaken(entry.getTotalLoansTaken());
         entity.setCriminal(entry.isCriminal());
+        entity.setBlackListed(entry.isBlackListed());
         return entity;
     }
 }

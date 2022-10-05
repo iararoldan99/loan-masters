@@ -19,13 +19,13 @@ public class Client {
     private Integer age;
     private Integer creditScore;
     private Integer totalLoansTaken;
-    private Integer totalLoansFullyPayed;
-    private Integer duesToPay;
-    private Integer overDues;
-    private Integer duesPayedAtTheMoment;
     private String jobTitle;
     private boolean criminal;
     private boolean blackListed;
-    @OneToMany(mappedBy = "client", orphanRemoval = true, cascade = {CascadeType.ALL})
-    private List<Loan> loans = new ArrayList<>();
+    private Integer totalLoansFullyPayed;
+    private Integer duesToPay; // cuotas a vencer NO vencidas
+    private Integer overDues; // cuotas vencidas
+    private Integer duesPayedAtTheMoment; // total cuotas pagadas hasta el momento
+    //@OneToMany(mappedBy = "client", orphanRemoval = true, cascade = {CascadeType.ALL})
+    //private List<Loan> loans = new ArrayList<>();
 }
