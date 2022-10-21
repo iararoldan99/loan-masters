@@ -19,6 +19,6 @@ public class ClientController {
 
     @PostMapping("/apply")
     public ResponseEntity<Validator.ValidationResult> apply(@Valid @RequestBody ClientDTO client) {
-        return ResponseEntity.ok(service.isEligible.apply(client));
+        return ResponseEntity.ok(service.isClientEligible.apply(client));
     }
 }

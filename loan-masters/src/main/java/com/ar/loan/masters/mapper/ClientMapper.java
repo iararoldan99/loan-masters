@@ -18,10 +18,7 @@ public class ClientMapper {
         entity.setEmail(dto.getEmail());
         entity.setCriminal(dto.isCriminal());
         entity.setBlackListed(dto.isBlackListed());
-        entity.setTotalLoansTaken(dto.getTotalLoansTaken());
-        entity.setDuesToPay(loan.getDuesToPay());
-        entity.setDuesPayedAtTheMoment(0);
-        entity.setOverDues(0);
+        entity.setTotalLoansTaken(dto.getTotalLoansTaken() + 1);
         entity.setLoans(List.of(loan));
         return entity;
     }

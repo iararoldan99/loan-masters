@@ -16,7 +16,6 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
-    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "client_id")
     private Integer clientId;
     private Double amount;

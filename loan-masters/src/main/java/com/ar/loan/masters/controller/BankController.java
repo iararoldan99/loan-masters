@@ -1,6 +1,8 @@
 package com.ar.loan.masters.controller;
 
 import com.ar.loan.masters.dto.LoanDTO;
+import com.ar.loan.masters.dto.Notification;
+import com.ar.loan.masters.entity.Client;
 import com.ar.loan.masters.entity.Loan;
 import com.ar.loan.masters.service.impl.BankServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,11 @@ public class BankController {
     @GetMapping("/totalMoneyBalance")
     public ResponseEntity<Double> getTotalMoneyBalance(){
         return ResponseEntity.ok(service.findTotalMoneyBalance.get());
+    }
+
+    @PostMapping("/seize")
+    public ResponseEntity<Notification> seizeClient(@Valid Client client, Integer loanId){
+        return ResponseEntity.ok(service.seizeClient(client, loanId));
     }
 
 

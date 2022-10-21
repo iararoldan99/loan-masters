@@ -13,5 +13,4 @@ import java.util.function.Supplier;
 
 @Service
 public interface LoanService {
-
 }

@@ -16,6 +16,9 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String fullName;
+    @ManyToOne
+    @JoinColumn(name = "bank_id")
+    private Bank bankId;
     private String email;
     private Integer age;
     private Integer creditScore;
@@ -24,9 +27,6 @@ public class Client {
     private boolean criminal;
     private boolean blackListed;
     private Integer totalLoansFullyPayed;
-    private Integer duesToPay; // cuotas a vencer NO vencidas
-    private Integer overDues; // cuotas vencidas
-    private Integer duesPayedAtTheMoment; // total cuotas pagadas hasta el momento
     @OneToMany(mappedBy = "clientId", orphanRemoval = true, cascade = {CascadeType.ALL})
     @Convert(converter = JpaConverterJson.class)
     private List<Loan> loans = new ArrayList<>();

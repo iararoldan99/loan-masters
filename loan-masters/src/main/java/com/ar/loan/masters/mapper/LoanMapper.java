@@ -13,16 +13,16 @@ public class LoanMapper {
     public Loan fromDTOToEntity(LoanDTO loanDTO){
         var loanEntity = new Loan();
         loanEntity.setAmount(loanDTO.getAmount());
-        loanEntity.setInterest(loanDTO.getInterest());
         loanEntity.setMonths(loanDTO.getMonths());
         loanEntity.setStart(loanDTO.getStart());
         loanEntity.setEnd(loanDTO.getEnd());
-        loanEntity.setDuesPayed(0);
         loanEntity.setDues(loanDTO.getDues());
+        loanEntity.setDuesPayed(0);
         loanEntity.setDuesToPay(loanDTO.getDues());
         loanEntity.setOverDues(0);
         loanEntity.setFullyPayed(false);
         loanEntity.setClientId(clientMapper.fromDTOToEntity(loanDTO.getClient(), loanEntity).getId());
+        loanEntity.setInterest(loanDTO.getInterest());
         return loanEntity;
     }
 }
