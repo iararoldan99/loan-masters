@@ -21,7 +21,6 @@ public class LoanMapper {
         loanEntity.setDuesToPay(loanDTO.getDues());
         loanEntity.setOverDues(0);
         loanEntity.setFullyPayed(false);
-        loanEntity.setClientId(clientMapper.fromDTOToEntity(loanDTO.getClient(), loanEntity).getId());
         loanEntity.setInterest(loanDTO.getInterest());
         return loanEntity;
     }

@@ -26,7 +26,7 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     private LoanServiceImpl loanService;
 
-    Consumer<Client> saveClient = client -> repository.save(client);
+    public Consumer<Client> saveClient = client -> repository.save(client);
     public Predicate<Long> clientExists = id -> repository.findById(id).isPresent();
     public Function<Long, Optional<Client>> findById = id -> repository.findById(id);
     public Supplier<List<Client>> getAllClients = () -> repository.findAll();

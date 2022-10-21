@@ -61,7 +61,6 @@ public class BankServiceImpl implements BankService {
         double subtraction = totalBalance - loanAmount;
         if (totalBalance > 0 && bank.getId() != null) {
             bank.setTotalMoneyBalance(subtraction);
-            bankRepository.save(bank);
         } else {
             try {
                 throw new InsufficientFundsException("Not enough money to grant loan");
@@ -77,6 +76,7 @@ public class BankServiceImpl implements BankService {
         subtractMoneyFromBalance.apply(loan.getAmount());
         Client client = clientMapper.fromDTOToEntity(loanDTO.getClient(), loan);
         clientService.saveClient.accept(client);
+        loan.setClientId(client.getId());
         loanService.saveLoan.accept(loan);
         return loan;
     };

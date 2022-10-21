@@ -19,12 +19,6 @@ public class Bank {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
-    private String name;
     private Double totalMoneyBalance;
-
-    @OneToMany(orphanRemoval = true, cascade = {CascadeType.ALL})
-    @JoinColumn(name = "bank_id")
-    @Convert(converter = JpaConverterJson.class)
-    private List<Client> clients = new ArrayList<>();
 
 }
