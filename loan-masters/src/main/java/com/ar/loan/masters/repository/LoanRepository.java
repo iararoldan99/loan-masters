@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface LoanRepository extends JpaRepository<Loan, Integer> {
-    @Query("SELECT * from Loan l WHERE l.clientId = ?1")
+    @Query(value= "SELECT Loan from Loan l WHERE l.clientId=?1", nativeQuery = true)
     List<Loan> findAllByClientId(Integer id);
 
     List<Loan> findByClientId(Integer clientId);
